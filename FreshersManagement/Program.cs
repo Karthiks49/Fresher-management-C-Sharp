@@ -99,7 +99,7 @@ namespace FreshersManagement
                 count++;
 
             }
-            FileStream fileStream = new FileStream(@"C:\Text\text.txt", FileMode.Append);
+            FileStream fileStream = new FileStream(filePath, FileMode.Append);
             StreamWriter streamWriter = new StreamWriter(fileStream);
 
             foreach (var candidate in freshersList)
