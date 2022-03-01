@@ -9,12 +9,12 @@ namespace FreshersInfo
     public class FresherDetail
     {
         public string name { get; set; }
-        public DateTime dateOfBirth { get; set; }
+        public string dateOfBirth { get; set; }
         public long mobileNumber { get; set; }
         public string address { get; set; }
         public string qualification { get; set; }
 
-        public FresherDetail(string name, DateTime dateOfBirth, long mobileNumber, string address, string qualification)
+        public FresherDetail(string name, string dateOfBirth, long mobileNumber, string address, string qualification)
         {
             this.name = name;
             this.dateOfBirth = dateOfBirth;

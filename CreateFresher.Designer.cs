@@ -35,16 +35,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.addressContainer = new System.Windows.Forms.TextBox();
             this.mobileNumberContainer = new System.Windows.Forms.TextBox();
-            this.nameContainer = new System.Windows.Forms.TextBox();
             this.dateOfBirthContainer = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.save = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.nameContainer = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,11 +59,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.nameContainer);
             this.groupBox1.Controls.Add(this.course);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.addressContainer);
             this.groupBox1.Controls.Add(this.mobileNumberContainer);
-            this.groupBox1.Controls.Add(this.nameContainer);
             this.groupBox1.Controls.Add(this.dateOfBirthContainer);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -72,13 +72,14 @@
             this.groupBox1.Font = new System.Drawing.Font("Cascadia Code", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(49, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(775, 514);
+            this.groupBox1.Size = new System.Drawing.Size(775, 468);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fresher Details";
             // 
             // course
             // 
+            this.course.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.course.FormattingEnabled = true;
             this.course.Items.AddRange(new object[] {
             "B.Sc",
@@ -94,7 +95,7 @@
             "Others"});
             this.course.Location = new System.Drawing.Point(241, 397);
             this.course.Name = "course";
-            this.course.Size = new System.Drawing.Size(256, 30);
+            this.course.Size = new System.Drawing.Size(225, 30);
             this.course.TabIndex = 9;
             // 
             // label5
@@ -122,14 +123,7 @@
             this.mobileNumberContainer.Name = "mobileNumberContainer";
             this.mobileNumberContainer.Size = new System.Drawing.Size(225, 30);
             this.mobileNumberContainer.TabIndex = 6;
-            // 
-            // nameContainer
-            // 
-            this.nameContainer.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameContainer.Location = new System.Drawing.Point(241, 77);
-            this.nameContainer.Name = "nameContainer";
-            this.nameContainer.Size = new System.Drawing.Size(313, 30);
-            this.nameContainer.TabIndex = 5;
+            this.mobileNumberContainer.Validating += new System.ComponentModel.CancelEventHandler(this.mobileNumberContainer_Validating);
             // 
             // dateOfBirthContainer
             // 
@@ -137,6 +131,7 @@
             this.dateOfBirthContainer.Name = "dateOfBirthContainer";
             this.dateOfBirthContainer.Size = new System.Drawing.Size(313, 27);
             this.dateOfBirthContainer.TabIndex = 4;
+            this.dateOfBirthContainer.Validating += new System.ComponentModel.CancelEventHandler(this.dateOfBirthContainer_Validating);
             // 
             // label4
             // 
@@ -173,7 +168,7 @@
             this.save.BackColor = System.Drawing.Color.LightCyan;
             this.save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.save.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.save.Location = new System.Drawing.Point(916, 109);
+            this.save.Location = new System.Drawing.Point(368, 552);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(117, 48);
             this.save.TabIndex = 8;
@@ -187,48 +182,35 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // updateButton
+            // errorProvider1
             // 
-            this.updateButton.BackColor = System.Drawing.Color.LightCyan;
-            this.updateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.updateButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateButton.Location = new System.Drawing.Point(916, 270);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(117, 48);
-            this.updateButton.TabIndex = 10;
-            this.updateButton.Text = "Update";
-            this.updateButton.UseVisualStyleBackColor = false;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            this.errorProvider1.ContainerControl = this;
             // 
-            // deleteButton
+            // nameContainer
             // 
-            this.deleteButton.BackColor = System.Drawing.Color.LightCyan;
-            this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(916, 438);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(117, 48);
-            this.deleteButton.TabIndex = 11;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.nameContainer.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameContainer.Location = new System.Drawing.Point(241, 82);
+            this.nameContainer.Name = "nameContainer";
+            this.nameContainer.Size = new System.Drawing.Size(313, 30);
+            this.nameContainer.TabIndex = 10;
+            this.nameContainer.Validating += new System.ComponentModel.CancelEventHandler(this.nameContainer_Validating);
             // 
             // CreateFresher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(1103, 597);
-            this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.updateButton);
+            this.ClientSize = new System.Drawing.Size(891, 635);
             this.Controls.Add(this.save);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "CreateFresher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateFresher";
+            this.Load += new System.EventHandler(this.CreateFresher_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -240,7 +222,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox addressContainer;
         private System.Windows.Forms.TextBox mobileNumberContainer;
-        private System.Windows.Forms.TextBox nameContainer;
         private System.Windows.Forms.DateTimePicker dateOfBirthContainer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -248,7 +229,7 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ComboBox course;
-        private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox nameContainer;
     }
 }

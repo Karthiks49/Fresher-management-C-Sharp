@@ -20,24 +20,25 @@ namespace FreshersInfo
 
         public void Display()
         {
-            FresherManagement fresherManagement = new FresherManagement();
+            FresherManagement fresherManagement = new FresherManagement(); 
             listView.DataSource = fresherManagement.GetFreshers();
         }
 
-        private void listView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void update_Click(object sender, EventArgs e)
         {
             CreateFresher createFresher = new CreateFresher();
-            createFresher.row= e.RowIndex;
-            
-            string name = listView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            createFresher.name = name;
-            DateTime dateOfBirth = DateTime.Parse(listView.Rows[e.RowIndex].Cells[1].Value.ToString());
-            string mobileNumber = listView.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string address = listView.Rows[e.RowIndex].Cells[3].Value.ToString();
-            string qualification = listView.Rows[e.RowIndex].Cells[4].Value.ToString();
-            
-            createFresher.GetValues(name, dateOfBirth, mobileNumber, address, qualification);
+            int index = listView.CurrentCell.RowIndex;
+            createFresher.row = index;
+            createFresher.GetValues(index);
             createFresher.ShowDialog();
+            listView.Refresh();
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            CreateFresher createFresher = new CreateFresher();
+            int index = listView.CurrentCell.RowIndex;
+            createFresher.DeleteFresher(index);
         }
     }
 }

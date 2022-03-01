@@ -24,9 +24,7 @@ namespace FreshersInfo
         private void viewOption_Click(object sender, EventArgs e)
         {
             ViewFresher viewFresher = new ViewFresher();
-            viewFresher.MdiParent = this;
-
-            viewFresher.Show();
+            viewFresher.ShowDialog();
         }
 
         private void createOption_Click(object sender, EventArgs e)

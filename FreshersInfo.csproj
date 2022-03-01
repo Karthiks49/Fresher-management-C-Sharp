@@ -86,6 +86,9 @@
     <EmbeddedResource Include="ViewFresher.resx">
       <DependentUpon>ViewFresher.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Fresher.datasource" />
+    <None Include="Properties\DataSources\FresherDetail.datasource" />
+    <None Include="Properties\DataSources\FresherManagement.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
